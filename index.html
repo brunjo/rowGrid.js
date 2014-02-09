@@ -14,16 +14,25 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <style>
+      .container {
+        width: 1200px;
+        min-height: 100px;
+        background: #eee;
+      }
       .item {
         float: left;
+        margin-bottom: 15px; 
       }
       .item img {
-        width: 100%;
-        height: 100%;
+        max-width: 100%;
+        vertical-align:bottom
+      }
+      .firstItem {
+        clear: both;
       }
     </style>
     <script>
-      var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
+      var options = {minMargin: 10, maxMargin: 30, itemSelector: ".item", firstItemClass: "firstItem"};
       $(document).ready(function() {
         $(".container").rowGrid(options);
       });
