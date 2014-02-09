@@ -24,7 +24,9 @@
     </style>
     <script>
       var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
-      $(".container").rowGrid(options);
+      $(document).on("load", function() {
+        $(".container").rowGrid(options);
+      });
     </script>
   </head>
   <body>
