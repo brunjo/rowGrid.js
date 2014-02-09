@@ -1,5 +1,5 @@
 # rowGrid.js
-**roWgrid.js is a small, lightweight jQuery plugin for arranging items in rows.**
+**rowGrid.js is a small, lightweight (1.24kb minfied) jQuery plugin for arranging items in rows.**
 
 The grid is similar to the result page of the Google Image Search or the Google+ images.
 
