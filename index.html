@@ -15,9 +15,15 @@
     <![endif]-->
     <style>
       .container {
-        width: 1200px;
-        min-height: 100px;
         background: #eee;
+      }
+      .container:before,
+      .container:after {
+          content:"";
+          display:table;
+      }
+      .container:after {
+          clear:both;
       }
       .item {
         float: left;
