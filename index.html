@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>RowGrid.js by brunjo</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>RowGrid.js</h1>
+        <p>A small, lightweight jQuery plugin for arranging items in rows</p>
+
+        <p class="view"><a href="https://github.com/brunjo/rowGrid.js">View the Project on GitHub <small>brunjo/rowGrid.js</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/brunjo/rowGrid.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/brunjo/rowGrid.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/brunjo/rowGrid.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="rowgridjs" class="anchor" href="#rowgridjs"><span class="octicon octicon-link"></span></a>rowGrid.js</h1>
+
+<p><strong>rowGrid.js is a small, lightweight (1.24kb minfied) jQuery plugin for arranging items in rows.</strong></p>
+
+<p>The grid is similar to the result page of the Google Image Search or the Google+ images.</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<pre><code>&lt;script src="path/to/jquery.min.js" &gt;
+&lt;script src="path/to/jquery.row-grid.min.js" &gt;
+</code></pre>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>HTML:</p>
+
+<pre><code>&lt;div class="container"&gt;
+  &lt;div class="item"&gt;
+    &lt;img src="http://placehold.it/340x200" /&gt;
+  &lt;/div&gt;
+  &lt;div class="item"&gt;
+    &lt;img src="http://placehold.it/320x200" /&gt;
+  &lt;/div&gt;
+  ...
+&lt;/div&gt;
+</code></pre>
+
+<p>JS:</p>
+
+<pre><code>var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
+$(".container").rowGrid(options);
+</code></pre>
+
+<h3>
+<a name="endless-scroll" class="anchor" href="#endless-scroll"><span class="octicon octicon-link"></span></a>Endless Scroll</h3>
+
+<p>JS:</p>
+
+<pre><code>// append new items
+$(".container").append("&lt;div class='item'&gt;&lt;img src='http://placehold.it/310x200' /&gt;");
+// arrange appended items
+$(".container").rowGrid("appended");
+</code></pre>
+
+<h3>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h3>
+
+<h4>
+<a name="itemselector-required" class="anchor" href="#itemselector-required"><span class="octicon octicon-link"></span></a>itemSelector (required)</h4>
+
+<h4>
+<a name="minmargin" class="anchor" href="#minmargin"><span class="octicon octicon-link"></span></a>minMargin</h4>
+
+<h4>
+<a name="maxmargin" class="anchor" href="#maxmargin"><span class="octicon octicon-link"></span></a>maxMargin</h4>
+
+<h4>
+<a name="resize" class="anchor" href="#resize"><span class="octicon octicon-link"></span></a>resize</h4>
+
+<h4>
+<a name="lastrowclass" class="anchor" href="#lastrowclass"><span class="octicon octicon-link"></span></a>lastRowClass</h4>
+
+<h4>
+<a name="firstitemclass" class="anchor" href="#firstitemclass"><span class="octicon octicon-link"></span></a>firstItemClass</h4>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/brunjo">brunjo</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
