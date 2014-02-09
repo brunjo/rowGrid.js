@@ -38,7 +38,7 @@
       }
     </style>
     <script>
-      var options = {minMargin: 10, maxMargin: 30, itemSelector: ".item", firstItemClass: "firstItem"};
+      var options = {minMargin: 5, maxMargin: 15, itemSelector: ".item", firstItemClass: "firstItem"};
       $(document).ready(function() {
         $(".container").rowGrid(options);
       });
@@ -81,10 +81,10 @@
 
 <pre><code>&lt;div class="container"&gt;
   &lt;div class="item"&gt;
-    &lt;img src="http://placehold.it/340x200" /&gt;
+    &lt;img src="http://placehold.it/120x100" width="120" height="100" /&gt;
   &lt;/div&gt;
   &lt;div class="item"&gt;
-    &lt;img src="http://placehold.it/320x200" /&gt;
+    &lt;img src="http://placehold.it/130x100" width="130" height="100" /&gt;
   &lt;/div&gt;
   ...
 &lt;/div&gt;
@@ -92,7 +92,7 @@
 
 <p>JS:</p>
 
-<pre><code>var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
+<pre><code>var options = {minMargin: 5, maxMargin: 15, itemSelector: ".item"};
 $(".container").rowGrid(options);
 </code></pre>
 <div class="container">
@@ -115,7 +115,31 @@ $(".container").rowGrid(options);
     <img src="http://placehold.it/90x100" width="90" height="100" />
   </div>
   <div class="item">
+    <img src="http://placehold.it/100x100" width="100" height="100" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/90x100" width="90" height="100" />
+  </div>
+  <div class="item">
     <img src="http://placehold.it/150x100" width="150" height="100" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/120x100" width="120" height="100" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/130x100" width="130" height="100" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/140x100" width="140" height="100" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/120x100" width="120" height="100" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/140x100" width="140" height="100" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/80x100" width="80" height="100" />
   </div>
 </div>
       </section>
