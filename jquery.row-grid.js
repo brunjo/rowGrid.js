@@ -1,4 +1,4 @@
-(function( $ ) {
+(function($){
   $.fn.rowGrid = function( options ) {
     if(options === "appended") {
       options = this.data("grid-options");
@@ -73,14 +73,15 @@
             $rowElem.addClass(options["firstItemClass"]);
           }
           var rowElemWidth = $rowElem.outerWidth();
-          var ratio = rowElemWidth / rowWidth;
+          var newWidth = rowElemWidth - (rowElemWidth / rowWidth) * diff;
           $rowElem
-            .css("width", rowElemWidth - ratio * (diff))
+            .css("width", newWidth)
+            .css("height", $rowElem.height() * (newWidth / rowElemWidth))
             .css("margin-right", (rowElemIndex < rowElems.length - 1)?rowMargin : 0);
         }
         rowElems = [];
         rowWidth = 0;
       }
-    }); 
-  }; 
-})( jQuery );
+    });
+  };
+})(jQuery);
