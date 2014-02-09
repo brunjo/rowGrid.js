@@ -11,7 +11,7 @@ The grid is similar to the result page of the Google Image Search or the Google+
 ## Usage
 HTML:
 ```
-<div class="items">
+<div class="container">
   <div class="item">
     <img src="http://placehold.it/340x200" />
   </div>
@@ -24,7 +24,16 @@ HTML:
 JS:
 ```
 var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
-$(".items").rowGrid(options);
+$(".container").rowGrid(options);
+```
+
+### Endless Scroll
+JS:
+```
+// append new items
+$(".container").append("<div class='item'><img src='http://placehold.it/310x200' />");
+// arrange appended items
+$(".container").rowGrid("appended");
 ```
 
 ### Options
