@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>RowGrid.js by brunjo</title>
+    <title>RowGrid.js Demo by brunjo</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -11,11 +11,24 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <style>
+      .item {
+        float: left;
+      }
+      .item img {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <script>
+      var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
+      $(".container").rowGrid(options);
+    </script>
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1>RowGrid.js</h1>
+        <h1>RowGrid.js Demo</h1>
         <p>A small, lightweight jQuery plugin for arranging items in rows</p>
 
         <p class="view"><a href="https://github.com/brunjo/rowGrid.js">View the Project on GitHub <small>brunjo/rowGrid.js</small></a></p>
@@ -63,38 +76,26 @@
 <pre><code>var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
 $(".container").rowGrid(options);
 </code></pre>
-
-<h3>
-<a name="endless-scroll" class="anchor" href="#endless-scroll"><span class="octicon octicon-link"></span></a>Endless Scroll</h3>
-
-<p>JS:</p>
-
-<pre><code>// append new items
-$(".container").append("&lt;div class='item'&gt;&lt;img src='http://placehold.it/310x200' /&gt;");
-// arrange appended items
-$(".container").rowGrid("appended");
-</code></pre>
-
-<h3>
-<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h3>
-
-<h4>
-<a name="itemselector-required" class="anchor" href="#itemselector-required"><span class="octicon octicon-link"></span></a>itemSelector (required)</h4>
-
-<h4>
-<a name="minmargin" class="anchor" href="#minmargin"><span class="octicon octicon-link"></span></a>minMargin</h4>
-
-<h4>
-<a name="maxmargin" class="anchor" href="#maxmargin"><span class="octicon octicon-link"></span></a>maxMargin</h4>
-
-<h4>
-<a name="resize" class="anchor" href="#resize"><span class="octicon octicon-link"></span></a>resize</h4>
-
-<h4>
-<a name="lastrowclass" class="anchor" href="#lastrowclass"><span class="octicon octicon-link"></span></a>lastRowClass</h4>
-
-<h4>
-<a name="firstitemclass" class="anchor" href="#firstitemclass"><span class="octicon octicon-link"></span></a>firstItemClass</h4>
+<div class="container">
+  <div class="item">
+    <img src="http://placehold.it/340x200" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/320x200" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/310x200" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/350x200" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/300x200" />
+  </div>
+  <div class="item">
+    <img src="http://placehold.it/330x200" />
+  </div>
+</div>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/brunjo">brunjo</a></p>
