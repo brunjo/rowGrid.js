@@ -50,6 +50,15 @@ a small {
   margin:0 auto;
 }
 
+.container, .container2 {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.container2 {
+  overflow: auto;
+  height: 350px;
+}
+
 blockquote {
   border-left:1px solid #e5e5e5;
   margin:0;
