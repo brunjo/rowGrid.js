@@ -4,7 +4,6 @@
       options = this.data("grid-options");
       var $lastRow = this.children("." + options["lastRowClass"]);
       var $items = $lastRow.nextAll().add($lastRow);
-      $lastRow.removeClass("last-row");
       layout(this, options, $items);
     } else {
       options = $.extend( {}, $.fn.rowGrid.defaults, options );
@@ -13,8 +12,8 @@
       layout($container, options);
       
       if(options["resize"]) {
-        $(window).on("resize", function() {
-          layout($container, options);
+        $(window).on("resize", {container: $container}, function(event) {
+          layout(event.data.container, options);
         });
       }
     }
@@ -22,19 +21,21 @@
   };
   
   $.fn.rowGrid.defaults = {
-    minMargin: 0,
-    maxMargin: 0,
+    minMargin: null,
+    maxMargin: null,
     resize: true,
     lastRowClass: "last-row",
     firstItemClass: null
   };
  
   function layout($container, options, $items) {
-    var containerWidth = $container.outerWidth(),
+    var containerWidth = $container.width() - ($container[0].offsetWidth - $container[0].clientWidth), // width minus scrollbar width
         rowWidth = 0,
         rowElems = [],
-        $items = $items || $(options["itemSelector"]),
+        $items = $items || $container.children(options["itemSelector"]),
         itemsSize = $items.length - 1;
+
+    $container.children("." + options["lastRowClass"]).removeClass(options["lastRowClass"]);
 
     $items.each(function(index, elem) {
       $(elem)
@@ -50,7 +51,7 @@
           if(rowElemIndex === 0) {
             $(elem).addClass(options["lastRowClass"]);
           }
-          $(elem).css("margin-right", (rowElemIndex < rowElems.length - 1)?options["maxMargin"] : 0);
+          $(elem).css("margin-right", (rowElemIndex < rowElems.length - 1)?options["minMargin"] : 0);
         });
       }      
       
