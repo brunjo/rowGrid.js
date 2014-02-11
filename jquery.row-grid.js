@@ -21,8 +21,8 @@
   };
   
   $.fn.rowGrid.defaults = {
-    minMargin: 0,
-    maxMargin: 0,
+    minMargin: null,
+    maxMargin: null,
     resize: true,
     lastRowClass: "last-row",
     firstItemClass: null
