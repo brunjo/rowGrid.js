@@ -87,8 +87,8 @@
           var rowElemWidth = itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].outerWidth;
           var newWidth = rowElemWidth - (rowElemWidth / rowWidth) * diff;
           $rowElem
-            .css('width', newWidth)
-            .css('height', itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].height * (newWidth / rowElemWidth))
+            .css('width', Math.floor(newWidth))
+            .css('height', Math.floor(itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].height * (newWidth / rowElemWidth)))
             .css('margin-right', (rowElemIndex < rowElems.length - 1)?rowMargin : 0);
           if(rowElemIndex === 0) {
             $rowElem.addClass(options.firstItemClass);
