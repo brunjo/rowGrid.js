@@ -1,7 +1,7 @@
 # rowGrid.js
-**rowGrid.js is a small, lightweight (~650 bytes gzipped) jQuery plugin for placing items in rows.**
+**rowGrid.js is a small, lightweight (~700 bytes gzipped) jQuery plugin for placing items in rows.**
 
-The grid is similar to the result page of the Google Image Search, the Google+ images or the shutterstock result page.
+The grid similar to grids on Google Image Search, flickr, shutterstock and Google+ images.
 
 Features:
 
@@ -11,7 +11,7 @@ Features:
 Do you like this project? Follow me on Twitter [@3runjo][1].
  
 ## How does it work?
-All items must have the **same height** but the **width can be variable**. RowGrid.js arranges the items in rows so that the width of the rows equals the width of the container/parent element.
+All items must have the **same height** but the **width can be variable**. RowGrid.js justifies the items in straight rows so that the width of the rows equals the width of the container/parent element.
 At first rowGrid.js adjusts the margin between the items. If this is not enough rowGrid.js scales down the items.
  
 ## Demos & Examples
