@@ -1,5 +1,5 @@
 # rowGrid.js
-**rowGrid.js is a small, lightweight (~700 bytes gzipped) jQuery plugin for placing items in rows.**
+**rowGrid.js is a small, lightweight (~700 bytes gzipped) jQuery plugin for placing images (or other items) in  straight rows.**
 
 The grid similar to grids on Google Image Search, flickr, shutterstock and Google+ images.
 
