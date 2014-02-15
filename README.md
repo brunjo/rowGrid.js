@@ -8,6 +8,8 @@ Features:
  * responisve
  * infinite scrolling
 
+[![Example Grid](http://brunjo.github.io/rowGrid.js/example.png)][2]
+
 Do you like this project? Follow me on Twitter [@3runjo][1].
  
 ## How does it work?
@@ -95,3 +97,4 @@ The first item in every row gets this class.
 
 
   [1]: https://twitter.com/3runjo "@3runjo"
+  [2]: http://brunjo.github.io/rowGrid.js/ "Demos"
