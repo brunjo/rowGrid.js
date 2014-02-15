@@ -8,6 +8,8 @@ Features:
  * responisve
  * infinite scrolling
 
+![Example Grid](http://brunjo.github.io/rowGrid.js/example.png)
+
 Do you like this project? Follow me on Twitter [@3runjo][1].
  
 ## How does it work?
