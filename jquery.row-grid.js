@@ -81,21 +81,30 @@
           var rowMargin = options.maxMargin - diff / (nrOfElems - 1);
           diff = 0;
         }
-        var $rowElem;
+        var $rowElem,
+          widthDiff = 0;
         for(var rowElemIndex = 0; rowElemIndex<rowElems.length; rowElemIndex++) {
           $rowElem = rowElems[rowElemIndex];
           var rowElemWidth = itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].outerWidth;
           var newWidth = rowElemWidth - (rowElemWidth / rowWidth) * diff;
+          var newHeight = Math.round(itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].height * (newWidth / rowElemWidth));
+          if (widthDiff + 1 - newWidth % 1 >= 0.5 ) {
+            widthDiff -= newWidth % 1;
+            newWidth = Math.floor(newWidth);
+          } else {
+            widthDiff += 1 - newWidth % 1;
+            newWidth = Math.ceil(newWidth);
+          }
           $rowElem
-            .css('width', Math.floor(newWidth))
-            .css('height', Math.floor(itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].height * (newWidth / rowElemWidth)))
+            .css('width', newWidth)
+            .css('height', newHeight)
             .css('margin-right', (rowElemIndex < rowElems.length - 1)?rowMargin : 0);
           if(rowElemIndex === 0) {
             $rowElem.addClass(options.firstItemClass);
           }
         }
-        rowElems = [];
-        rowWidth = 0;
+        rowElems = [],
+          rowWidth = 0;
       }
     });
   }
