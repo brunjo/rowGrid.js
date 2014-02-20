@@ -107,10 +107,11 @@
             widthDiff += 1 - newWidth % 1;
             newWidth = Math.ceil(newWidth);
           }
-          $rowElem
-            .css('width', newWidth)
-            .css('height', newHeight)
-            .css('margin-right', (rowElemIndex < rowElems.length - 1)?rowMargin : 0);
+          $rowElem.css({
+              width: newWidth,
+              height: newHeight,
+              "margin-right": (rowElemIndex < rowElems.length - 1)?rowMargin : 0
+            });
           if(rowElemIndex === 0) {
             $rowElem.addClass(options.firstItemClass);
           }
