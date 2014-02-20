@@ -1,5 +1,17 @@
 (function($){
   $.fn.rowGrid = function( options ) {
+    if ( this.length == 0 ) {
+      console.error( 'No element found for "' + this.selector + '".' );
+      return this;
+    }
+    if ( this.length > 1 ) {
+      return this.each(
+        function() {
+          $(this).rowGrid( options );
+        }
+      );
+    }
+
     if(options === 'appended') {
       options = this.data('grid-options');
       var $lastRow = this.children('.' + options.lastRowClass);
