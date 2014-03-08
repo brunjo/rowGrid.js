@@ -16,15 +16,14 @@
       options = this.data('grid-options');
       var $lastRow = this.children('.' + options.lastRowClass);
       var items = $lastRow.nextAll().add($lastRow);
-      layout(this, options, items);
+      layout(this[0], options, items);
     } else {
       options = $.extend( {}, $.fn.rowGrid.defaults, options );
-      var $container = this;
-      $container.data('grid-options', options);
-      layout($container, options);
+      this.data('grid-options', options);
+      layout(this[0], options);
       
       if(options.resize) {
-        $(window).on('resize', {container: $container}, function(event) {
+        $(window).on('resize', {container: this[0]}, function(event) {
           layout(event.data.container, options);
         });
       }
@@ -40,27 +39,25 @@
     firstItemClass: null
   };
  
-  function layout($container, options, items) {
+  function layout(container, options, items) {
     var rowWidth = 0,
         rowElems = [],
-        items = items || $container.children(options.itemSelector),
+        items = items || container.querySelectorAll(options.itemSelector),
         itemsSize = items.length;
-
-    $container.children('.' + options.lastRowClass).removeClass(options.lastRowClass);
 
     for(var index = 0; index < itemsSize; ++index) {
       items[index].removeAttribute('style');
       if (items[index].classList) {
-        items[index].classList.remove(options.firstItemClass);
+        items[index].classList.remove(options.firstItemClass, options.lastRowClass);
       }
       else {
         // IE <10
-        items[index].className = items[index].className.replace(new RegExp('(^|\\b)' + options.firstItemClass + '(\\b|$)', 'gi'), ' ');
+        items[index].className = items[index].className.replace(new RegExp('(^|\\b)' + options.firstItemClass + '|' + options.lastRowClass + '(\\b|$)', 'gi'), ' ');
       }
     }
 
     // read
-    var containerWidth = $container[0].clientWidth;
+    var containerWidth = container.clientWidth;
     var itemAttrs = [];
     for(var i = 0; i < itemsSize; ++i) {
       itemAttrs[i] = {
