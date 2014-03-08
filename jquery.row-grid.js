@@ -57,7 +57,7 @@
     }
 
     // read
-    var containerWidth = container.clientWidth;
+    var containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'));
     var itemAttrs = [];
     for(var i = 0; i < itemsSize; ++i) {
       itemAttrs[i] = {
