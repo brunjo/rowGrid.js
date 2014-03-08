@@ -16,15 +16,14 @@
       options = this.data('grid-options');
       var $lastRow = this.children('.' + options.lastRowClass);
       var items = $lastRow.nextAll().add($lastRow);
-      layout(this, options, items);
+      layout(this[0], options, items);
     } else {
       options = $.extend( {}, $.fn.rowGrid.defaults, options );
-      var $container = this;
-      $container.data('grid-options', options);
-      layout($container, options);
+      this.data('grid-options', options);
+      layout(this[0], options);
       
       if(options.resize) {
-        $(window).on('resize', {container: $container}, function(event) {
+        $(window).on('resize', {container: this[0]}, function(event) {
           layout(event.data.container, options);
         });
       }
@@ -40,43 +39,46 @@
     firstItemClass: null
   };
  
-  function layout($container, options, items) {
+  function layout(container, options, items) {
     var rowWidth = 0,
         rowElems = [],
-        items = items || $container.children(options.itemSelector),
-        itemsSize = items.length - 1;
+        items = items || container.querySelectorAll(options.itemSelector),
+        itemsSize = items.length;
 
-    $container.children('.' + options.lastRowClass).removeClass(options.lastRowClass);
-
-    items
-      .removeAttr('style')
-      .removeClass(options.firstItemClass);
+    for(var index = 0; index < itemsSize; ++index) {
+      items[index].removeAttribute('style');
+      if (items[index].classList) {
+        items[index].classList.remove(options.firstItemClass, options.lastRowClass);
+      }
+      else {
+        // IE <10
+        items[index].className = items[index].className.replace(new RegExp('(^|\\b)' + options.firstItemClass + '|' + options.lastRowClass + '(\\b|$)', 'gi'), ' ');
+      }
+    }
 
     // read
-    var containerWidth = $container.width() - ($container[0].offsetWidth - $container[0].clientWidth); // width minus scrollbar width
+    var containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'));
     var itemAttrs = [];
-    items.each(function(index, elem) {
-      elem = $(elem);
-      itemAttrs[index] = {
-        outerWidth: elem.outerWidth(),
-        height: elem.height()
+    for(var i = 0; i < itemsSize; ++i) {
+      itemAttrs[i] = {
+        outerWidth: items[i].offsetWidth,
+        height: items[i].offsetHeight
       };
-    });
+    }
 
     // write
-    items.each(function(index, elem) {
-      elem = $(elem);
+    for(var index = 0; index < itemsSize; ++index) {
       rowWidth += itemAttrs[index].outerWidth;
-      rowElems.push(elem);
+      rowElems.push(items[index]);
       
       // check if it is the last element
-      if(index === itemsSize) {
+      if(index === itemsSize - 1) {
         for(var rowElemIndex = 0; rowElemIndex<rowElems.length; rowElemIndex++) {
           // if first element in row 
           if(rowElemIndex === 0) {
-            rowElems[rowElemIndex].addClass(options.lastRowClass);
+            rowElems[rowElemIndex].className += ' ' + options.lastRowClass;
           }
-          rowElems[rowElemIndex].css('margin-right', (rowElemIndex < rowElems.length - 1)?options.minMargin : 0);
+          rowElems[rowElemIndex].style['margin-right'] = (rowElemIndex < rowElems.length - 1)?options.minMargin : 0;
         }
       }      
       
@@ -93,10 +95,10 @@
           var rowMargin = options.maxMargin - diff / (nrOfElems - 1);
           diff = 0;
         }
-        var $rowElem,
+        var rowElem,
           widthDiff = 0;
         for(var rowElemIndex = 0; rowElemIndex<rowElems.length; rowElemIndex++) {
-          $rowElem = rowElems[rowElemIndex];
+          rowElem = rowElems[rowElemIndex];
           var rowElemWidth = itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].outerWidth;
           var newWidth = rowElemWidth - (rowElemWidth / rowWidth) * diff;
           var newHeight = Math.round(itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].height * (newWidth / rowElemWidth));
@@ -107,18 +109,17 @@
             widthDiff += 1 - newWidth % 1;
             newWidth = Math.ceil(newWidth);
           }
-          $rowElem.css({
-              width: newWidth,
-              height: newHeight,
-              "margin-right": (rowElemIndex < rowElems.length - 1)?rowMargin : 0
-            });
+          rowElem.style.cssText =
+              'width: ' + newWidth + 'px;' +
+              'height: ' + newHeight + 'px;' +
+              'margin-right: ' + ((rowElemIndex < rowElems.length - 1)?rowMargin : 0) + 'px';
           if(rowElemIndex === 0) {
-            $rowElem.addClass(options.firstItemClass);
+            rowElem.className += ' ' + options.firstItemClass;
           }
         }
         rowElems = [],
           rowWidth = 0;
       }
-    });
+    }
   }
 })(jQuery);
