@@ -78,7 +78,6 @@
           if(rowElemIndex === 0) {
             rowElems[rowElemIndex].className += ' ' + options.lastRowClass;
           }
-          console.log(rowElems[rowElemIndex]);
           rowElems[rowElemIndex].style.marginRight = (rowElemIndex < rowElems.length - 1)?options.minMargin+"px" : 0;
         }
       }      
