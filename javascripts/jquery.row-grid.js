@@ -1,14 +1,15 @@
 (function($){
   $.fn.rowGrid = function( options ) {
     return this.each(function() {
+      $this = $(this);
       if(options === 'appended') {
-        options = $(this).data('grid-options');
-        var $lastRow = this.children('.' + options.lastRowClass);
+        options = $this.data('grid-options');
+        var $lastRow = $this.children('.' + options.lastRowClass);
         var items = $lastRow.nextAll().add($lastRow);
         layout(this, options, items);
       } else {
         options = $.extend( {}, $.fn.rowGrid.defaults, options );
-        $(this).data('grid-options', options);
+        $this.data('grid-options', options);
         layout(this, options);
         
         if(options.resize) {
