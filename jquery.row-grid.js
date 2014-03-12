@@ -1,34 +1,23 @@
 (function($){
   $.fn.rowGrid = function( options ) {
-    if ( this.length == 0 ) {
-      console.error( 'No element found for "' + this.selector + '".' );
-      return this;
-    }
-    if ( this.length > 1 ) {
-      return this.each(
-        function() {
-          $(this).rowGrid( options );
+    return this.each(function() {
+      if(options === 'appended') {
+        options = $(this).data('grid-options');
+        var $lastRow = this.children('.' + options.lastRowClass);
+        var items = $lastRow.nextAll().add($lastRow);
+        layout(this, options, items);
+      } else {
+        options = $.extend( {}, $.fn.rowGrid.defaults, options );
+        $(this).data('grid-options', options);
+        layout(this, options);
+        
+        if(options.resize) {
+          $(window).on('resize.rowGrid', {container: this}, function(event) {
+            layout(event.data.container, options);
+          });
         }
-      );
-    }
-
-    if(options === 'appended') {
-      options = this.data('grid-options');
-      var $lastRow = this.children('.' + options.lastRowClass);
-      var items = $lastRow.nextAll().add($lastRow);
-      layout(this[0], options, items);
-    } else {
-      options = $.extend( {}, $.fn.rowGrid.defaults, options );
-      this.data('grid-options', options);
-      layout(this[0], options);
-      
-      if(options.resize) {
-        $(window).on('resize.rowGrid', {container: this[0]}, function(event) {
-          layout(event.data.container, options);
-        });
       }
-    }
-    return this;
+    });
   };
   
   $.fn.rowGrid.defaults = {
