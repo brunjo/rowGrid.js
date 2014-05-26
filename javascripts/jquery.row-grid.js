@@ -47,7 +47,13 @@
     }
 
     // read
-    var containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'));
+    var containerWidth;
+    if (window.getComputedStyle) {
+      containerWidth = parseInt(getComputedStyle(container).width);
+    } else {
+      // IE <9
+      containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'))-1;
+    }
     var itemAttrs = [];
     for(var i = 0; i < itemsSize; ++i) {
       itemAttrs[i] = {
