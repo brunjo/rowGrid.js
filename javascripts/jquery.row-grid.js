@@ -47,13 +47,8 @@
     }
 
     // read
-    var containerWidth;
-    if (window.getComputedStyle) {
-      containerWidth = parseInt(getComputedStyle(container).width);
-    } else {
-      // IE <9
-      containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'))-1;
-    }
+    // only IE >8
+    var containerWidth = parseInt(getComputedStyle(container).width);
     var itemAttrs = [];
     for(var i = 0; i < itemsSize; ++i) {
       itemAttrs[i] = {
