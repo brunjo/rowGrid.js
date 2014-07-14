@@ -7,6 +7,7 @@
     { "name": "Bruno Joseph", "email": "bruno.joseph95@gmail.com"," homepage": "http://brunojoseph.com" }
   ],
   "main": "jquery.row-grid.js",
+  "ignore": [],
   "dependencies": {
     "jquery": ">=1.7.0"
   }
