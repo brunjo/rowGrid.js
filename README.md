@@ -19,6 +19,7 @@ At first rowGrid.js adjusts the margin between the items. If this is not enough 
  
 ## Demos & Examples
 Examples with explanation: http://brunjo.github.io/rowGrid.js/
+
 Real world example: http://www.pexels.com/
  
 ## Installation
