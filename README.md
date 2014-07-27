@@ -1,5 +1,5 @@
 # rowGrid.js
-**rowGrid.js is a small, lightweight (~800 bytes gzipped) jQuery plugin for placing images (or other items) in  straight rows.**
+**rowGrid.js is a small, lightweight (~900 bytes gzipped) jQuery plugin for placing images (or other items) in  straight rows.**
 
 The grid is similar to grids on Google Image Search, flickr, shutterstock and Google+ images.
 
@@ -7,6 +7,7 @@ Features:
 
  * responisve
  * infinite scrolling
+ * support for all modern browsers and IE >= 9
 
 [![Example Grid](http://brunjo.github.io/rowGrid.js/example.png)][2]
 
@@ -17,7 +18,8 @@ All items must have the **same height** but the **width can be variable**. RowGr
 At first rowGrid.js adjusts the margin between the items. If this is not enough rowGrid.js scales down the items.
  
 ## Demos & Examples
-http://brunjo.github.io/rowGrid.js/
+Examples with explanation: http://brunjo.github.io/rowGrid.js/
+Real world example: http://www.pexels.com/
  
 ## Installation
 RowGrid.js requires jQuery 1.7 or above.
