@@ -5,7 +5,7 @@
       if(options === 'appended') {
         options = $this.data('grid-options');
         var $lastRow = $this.children('.' + options.lastRowClass);
-        var items = $lastRow.nextAll().add($lastRow);
+        var items = $lastRow.nextAll(options.itemSelector).add($lastRow);
         layout(this, options, items);
       } else {
         options = $.extend( {}, $.fn.rowGrid.defaults, options );
@@ -32,11 +32,30 @@
   function layout(container, options, items) {
     var rowWidth = 0,
         rowElems = [],
-        items = items || container.querySelectorAll(options.itemSelector),
+        items = Array.prototype.slice.call(items || container.querySelectorAll(options.itemSelector)),
         itemsSize = items.length;
+    // read
+    var containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'));
+    var itemAttrs = [];
+    var theImage;
+    for(var i = 0; i < itemsSize; ++i) {
+      theImage = items[i].getElementsByTagName('img')[0];
+      if (!theImage) {
+        items.splice(i, 1);
+        --i;
+        --itemsSize;
+        continue;
+      }
+      // get width and height via attribute or js value
+      itemAttrs[i] = {
+        width: parseInt(theImage.getAttribute('width')) || theImage.offsetWidth,
+        height: parseInt(theImage.getAttribute('height')) || theImage.offsetHeight
+      };
+    }
+    itemsSize = items.length;
 
+    // write
     for(var index = 0; index < itemsSize; ++index) {
-      items[index].removeAttribute('style');
       if (items[index].classList) {
         items[index].classList.remove(options.firstItemClass, options.lastRowClass);
       }
@@ -44,32 +63,18 @@
         // IE <10
         items[index].className = items[index].className.replace(new RegExp('(^|\\b)' + options.firstItemClass + '|' + options.lastRowClass + '(\\b|$)', 'gi'), ' ');
       }
-    }
 
-    // read
-    // only IE >8
-    var containerWidth = parseInt(getComputedStyle(container).width);
-    var itemAttrs = [];
-    for(var i = 0; i < itemsSize; ++i) {
-      itemAttrs[i] = {
-        outerWidth: items[i].offsetWidth,
-        height: items[i].offsetHeight
-      };
-    }
-
-    // write
-    for(var index = 0; index < itemsSize; ++index) {
-      rowWidth += itemAttrs[index].outerWidth;
+      rowWidth += itemAttrs[index].width;
       rowElems.push(items[index]);
       
       // check if it is the last element
       if(index === itemsSize - 1) {
         for(var rowElemIndex = 0; rowElemIndex<rowElems.length; rowElemIndex++) {
-          // if first element in row 
+          // if first element in row
           if(rowElemIndex === 0) {
             rowElems[rowElemIndex].className += ' ' + options.lastRowClass;
           }
-          rowElems[rowElemIndex].style.marginRight = (rowElemIndex < rowElems.length - 1)?options.minMargin+'px' : 0;
+          rowElems[rowElemIndex].style.cssText = 'margin-right:' + ((rowElemIndex < rowElems.length - 1)?options.minMargin+'px' : 0);
         }
       }      
       
@@ -90,7 +95,7 @@
           widthDiff = 0;
         for(var rowElemIndex = 0; rowElemIndex<rowElems.length; rowElemIndex++) {
           rowElem = rowElems[rowElemIndex];
-          var rowElemWidth = itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].outerWidth;
+          var rowElemWidth = itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].width;
           var newWidth = rowElemWidth - (rowElemWidth / rowWidth) * diff;
           var newHeight = Math.round(itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].height * (newWidth / rowElemWidth));
           if (widthDiff + 1 - newWidth % 1 >= 0.5 ) {
