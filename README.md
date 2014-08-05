@@ -7,7 +7,7 @@ Features:
 
  * responisve
  * infinite scrolling
- * support for all modern browsers and IE >= 9
+ * support for all modern browsers and IE >= 8
 
 [![Example Grid](http://brunjo.github.io/rowGrid.js/example.png)][2]
 

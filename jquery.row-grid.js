@@ -32,7 +32,7 @@
   function layout(container, options, items) {
     var rowWidth = 0,
         rowElems = [],
-        items = Array.prototype.slice.call(items || container.querySelectorAll(options.itemSelector)),
+        items = jQuery.makeArray(items || container.querySelectorAll(options.itemSelector)),
         itemsSize = items.length;
     // read
     var containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'));
