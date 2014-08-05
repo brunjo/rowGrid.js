@@ -53,7 +53,7 @@ $(".container").rowGrid(options);
 JS:
 ```
 // append new items
-$(".container").append("<div class='item'><img src='http://placehold.it/310x200' />");
+$(".container").append("<div class='item'><img src='http://placehold.it/310x200' /></div>");
 // arrange appended items
 $(".container").rowGrid("appended");
 ```
