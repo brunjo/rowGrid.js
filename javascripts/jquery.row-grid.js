@@ -57,9 +57,9 @@
     // write
     for(var index = 0; index < itemsSize; ++index) {
       if (items[index].classList) {
-        items[index].classList.remove(options.firstItemClass, options.lastRowClass);
-      }
-      else {
+        items[index].classList.remove(options.firstItemClass);
+        items[index].classList.remove(options.lastRowClass);
+      } else {
         // IE <10
         items[index].className = items[index].className.replace(new RegExp('(^|\\b)' + options.firstItemClass + '|' + options.lastRowClass + '(\\b|$)', 'gi'), ' ');
       }
