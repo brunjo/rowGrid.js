@@ -74,7 +74,10 @@
           if(rowElemIndex === 0) {
             rowElems[rowElemIndex].className += ' ' + options.lastRowClass;
           }
-          rowElems[rowElemIndex].style.cssText = 'margin-right:' + ((rowElemIndex < rowElems.length - 1)?options.minMargin+'px' : 0);
+          rowElems[rowElemIndex].style.cssText =
+              'width: ' + itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].width + 'px;' +
+              'height: ' + itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].height + 'px;' +
+              'margin-right:' + ((rowElemIndex < rowElems.length - 1)?options.minMargin+'px' : 0);
         }
       }      
       

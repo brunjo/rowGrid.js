@@ -1,7 +1,7 @@
 {
   "name": "rowGrid.js",
   "description": "A small, lightweight jQuery plugin for placing items in straight rows",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "authors": [
     { "name": "Bruno Joseph", "email": "bruno.joseph95@gmail.com"," homepage": "http://brunojoseph.com" }
