@@ -37,7 +37,7 @@
     // read
     var containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'));
     var itemAttrs = [];
-    var theImage;
+    var theImage, w, h;
     for(var i = 0; i < itemsSize; ++i) {
       theImage = items[i].getElementsByTagName('img')[0];
       if (!theImage) {
@@ -47,9 +47,16 @@
         continue;
       }
       // get width and height via attribute or js value
+      if (!(w = parseInt(theImage.getAttribute('width')))) {
+        theImage.setAttribute('width', w = theImage.offsetWidth);
+      } 
+      if (!(h = parseInt(theImage.getAttribute('height')))) {
+        theImage.setAttribute('height', h = theImage.offsetHeight);
+      } 
+      
       itemAttrs[i] = {
-        width: parseInt(theImage.getAttribute('width')) || theImage.offsetWidth,
-        height: parseInt(theImage.getAttribute('height')) || theImage.offsetHeight
+        width: w,
+        height: h
       };
     }
     itemsSize = items.length;
