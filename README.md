@@ -24,15 +24,15 @@ Real world example: http://www.pexels.com/
  
 ## Installation
 RowGrid.js requires jQuery 1.7 or above.
-```
-<script src="path/to/jquery.min.js" >
-<script src="path/to/jquery.row-grid.min.js" >
+```HTML
+<script src="path/to/jquery.min.js"></script>
+<script src="path/to/jquery.row-grid.min.js"></script>
 ```
 ## Usage
 It is important that you either **declare the width and height as attributes** on the img tag or that you wait until the images are loaded before you start rowGrid.js.
 
 HTML:
-```
+```HTML
 <div class="container">
   <div class="item">
     <img src="path/to/image" width="320" height="200" />
@@ -44,14 +44,14 @@ HTML:
 </div>
 ```
 JS:
-```
+```JS
 var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
 $(".container").rowGrid(options);
 ```
 
 ### Endless Scrolling
 JS:
-```
+```JS
 // append new items
 $(".container").append("<div class='item'><img src='http://placehold.it/310x200' /></div>");
 // arrange appended items
@@ -59,7 +59,7 @@ $(".container").rowGrid("appended");
 ```
 
 ## Options
-```
+```JS
 $(".container").rowGrid({
     itemSelector: ".item"
     minMargin: 10, 
