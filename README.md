@@ -9,6 +9,8 @@ Features:
  * infinite scrolling
  * support for all modern browsers and IE >= 8
 
+Check out the vanilla-js branch to use the version that doesn't require jQuery: https://github.com/brunjo/rowGrid.js/tree/vanilla-js
+
 [![Example Grid](http://brunjo.github.io/rowGrid.js/example.png)][2]
 
 Do you like this project? Follow me on Twitter [@3runjo][1].
