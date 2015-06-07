@@ -1,5 +1,7 @@
-# rowGrid.js
-**rowGrid.js is a small, lightweight (~900 bytes gzipped) jQuery plugin for placing images (or other items) in  straight rows.**
+# rowGrid.js (no jQuery required)
+> This version of rowGrid.js is **not fully documented** yet. Check out the master branch of this repository to see the documented [jQuery version](https://github.com/brunjo/rowGrid.js).
+
+**rowGrid.js is a small, lightweight (~900 bytes gzipped) JavaScript plugin for placing images (or other items) in  straight rows.**
 
 The grid is similar to grids on Google Image Search, flickr, shutterstock and Google+ images.
 
@@ -7,7 +9,7 @@ Features:
 
  * responisve
  * infinite scrolling
- * support for all modern browsers and IE >= 8
+ * support for all modern browsers and IE >= 9
 
 [![Example Grid](http://brunjo.github.io/rowGrid.js/example.png)][2]
 
@@ -18,15 +20,12 @@ All items must have the **same height** but the **width can be variable**. RowGr
 At first rowGrid.js adjusts the margin between the items. If this is not enough rowGrid.js scales down the items.
  
 ## Demos & Examples
-Examples with explanation: http://brunjo.github.io/rowGrid.js/
-
 Real world example: http://www.pexels.com/
  
 ## Installation
-RowGrid.js requires jQuery 1.7 or above.
+Just include row-grid.js
 ```HTML
-<script src="path/to/jquery.min.js"></script>
-<script src="path/to/jquery.row-grid.min.js"></script>
+<script src="path/to/row-grid.min.js"></script>
 ```
 ## Usage
 It is important that you either **declare the width and height as attributes** on the img tag or that you wait until the images are loaded before you start rowGrid.js.
@@ -45,59 +44,11 @@ HTML:
 ```
 JS:
 ```JS
-var options = {minMargin: 10, maxMargin: 35, itemSelector: ".item"};
-$(".container").rowGrid(options);
+var container = document.getElementsByClassName('container')[0];
+rowGrid(container, {itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item", lastRowClass: 'last-row', resize: true});
 ```
 
-### Endless Scrolling
-JS:
-```JS
-// append new items
-$(".container").append("<div class='item'><img src='http://placehold.it/310x200' /></div>");
-// arrange appended items
-$(".container").rowGrid("appended");
-```
-
-## Options
-```JS
-$(".container").rowGrid({
-    itemSelector: ".item"
-    minMargin: 10, 
-    maxMargin: 35,
-    resize: true,
-    lastRowClass: "last-row",
-    firstItemClass: "first-item"
-});
-```
-#### itemSelector (required)
-* **value:** ```string``` (CSS Selector)
-
-You have to set this option. The selector have to reference to all grid items.
-#### minMargin
-* **value:** ```number``` or ```null```
-* **default value:** ```null```
-
-This is the minimal horizontal margin between the items. The margin is only between the items not between the first/last item and the container.
-#### maxMargin
-* **value:** ```number``` or ```null```
-* **default value:** ```null```
-
-This is the maximal horizontal margin between the items.
-#### resize
-* **value:** ```boolean```
-* **default value:** ```true```
-
-If ```resize``` is set to true the layout updates on resize events. This is useful for responsive websites.
-#### lastRowClass
-* **value:** ```string```
-* **default value:** ```last-row```
-
-The first item in the last row gets this class.
-#### firstItemClass
-* **value:** ```string``` or ```null```
-* **default value:** ```null```
-
-The first item in every row gets this class.
+**TODO add documentation**
 
 
   [1]: https://twitter.com/3runjo "@3runjo"

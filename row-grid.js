@@ -1,41 +1,42 @@
-(function($){
-  $.fn.rowGrid = function( options ) {
-    return this.each(function() {
-      $this = $(this);
-      if(options === 'appended') {
-        options = $this.data('grid-options');
-        var $lastRow = $this.children('.' + options.lastRowClass);
-        var items = $lastRow.nextAll(options.itemSelector).add($lastRow);
-        layout(this, options, items);
-      } else {
-        options = $.extend( {}, $.fn.rowGrid.defaults, options );
-        $this.data('grid-options', options);
-        layout(this, options);
-        
-        if(options.resize) {
-          $(window).on('resize.rowGrid', {container: this}, function(event) {
-            layout(event.data.container, options);
-          });
-        }
-      }
-    });
-  };
+var rowGrid = function(container, options) {
+  if(container === null || container === undefined) { return; }
+
+  if(options === 'appended') {
+    options = JSON.parse(container.getAttribute('data-row-grid'));
+    var lastRow = container.getElementsByClassName(options.lastRowClass)[0];
+    var items = nextAll(lastRow);
+    layout(container, options, items);
+  } else {
+    layout(container, options);
+    container.setAttribute('data-row-grid', JSON.stringify(options));
+    
+    if(options.resize) {
+      window.addEventListener('resize', function(event) {
+        layout(container, options);
+      });
+    }
+  }
   
-  $.fn.rowGrid.defaults = {
-    minMargin: null,
-    maxMargin: null,
-    resize: true,
-    lastRowClass: 'last-row',
-    firstItemClass: null
-  };
+  /* Get elem and all following siblings of elem */
+  function nextAll(elem) {
+    var matched = [elem];
+
+    while ( (elem = elem[ 'nextSibling' ]) && elem.nodeType !== 9 ) {
+      if ( elem.nodeType === 1 ) {
+        matched.push( elem );
+      }
+    }
+    return matched;
+  }
  
   function layout(container, options, items) {
     var rowWidth = 0,
         rowElems = [],
-        items = jQuery.makeArray(items || container.querySelectorAll(options.itemSelector)),
+        items = Array.prototype.slice.call(items || container.querySelectorAll(options.itemSelector)),
         itemsSize = items.length;
     // read
-    var containerWidth = container.clientWidth-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'));
+    var containerStyle = getComputedStyle(container);
+    var containerWidth = container.clientWidth - parseFloat(containerStyle.getPropertyValue('padding-left')) - parseFloat(containerStyle.getPropertyValue('padding-right'));
     var itemAttrs = [];
     var theImage, w, h;
     for(var i = 0; i < itemsSize; ++i) {
@@ -49,10 +50,10 @@
       // get width and height via attribute or js value
       if (!(w = parseInt(theImage.getAttribute('width')))) {
         theImage.setAttribute('width', w = theImage.offsetWidth);
-      } 
+      }
       if (!(h = parseInt(theImage.getAttribute('height')))) {
         theImage.setAttribute('height', h = theImage.offsetHeight);
-      } 
+      }
       
       itemAttrs[i] = {
         width: w,
@@ -76,7 +77,7 @@
       
       // check if it is the last element
       if(index === itemsSize - 1) {
-        for(var rowElemIndex = 0; rowElemIndex<rowElems.length; rowElemIndex++) {
+        for(var rowElemIndex = 0; rowElemIndex < rowElems.length; rowElemIndex++) {
           // if first element in row
           if(rowElemIndex === 0) {
             rowElems[rowElemIndex].className += ' ' + options.lastRowClass;
@@ -86,7 +87,7 @@
               'height: ' + itemAttrs[index+parseInt(rowElemIndex)-rowElems.length+1].height + 'px;' +
               'margin-right:' + ((rowElemIndex < rowElems.length - 1)?options.minMargin+'px' : 0);
         }
-      }      
+      }
       
       // check whether width of row is too high
       if(rowWidth + options.maxMargin * (rowElems.length - 1) > containerWidth) {
@@ -128,4 +129,4 @@
       }
     }
   }
-})(jQuery);
+};
