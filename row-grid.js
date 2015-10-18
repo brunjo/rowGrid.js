@@ -9,14 +9,14 @@ var rowGrid = function(container, options) {
   } else {
     layout(container, options);
     container.setAttribute('data-row-grid', JSON.stringify(options));
-    
+
     if(options.resize) {
       window.addEventListener('resize', function(event) {
         layout(container, options);
       });
     }
   }
-  
+
   /* Get elem and all following siblings of elem */
   function nextAll(elem) {
     var matched = [elem];
@@ -28,7 +28,7 @@ var rowGrid = function(container, options) {
     }
     return matched;
   }
- 
+
   function layout(container, options, items) {
     var rowWidth = 0,
         rowElems = [],
@@ -36,7 +36,7 @@ var rowGrid = function(container, options) {
         itemsSize = items.length;
     // read
     var containerStyle = getComputedStyle(container);
-    var containerWidth = container.clientWidth - parseFloat(containerStyle.getPropertyValue('padding-left')) - parseFloat(containerStyle.getPropertyValue('padding-right'));
+    var containerWidth = Math.floor(container.getBoundingClientRect().width) - parseFloat(containerStyle.getPropertyValue('padding-left')) - parseFloat(containerStyle.getPropertyValue('padding-right'));
     var itemAttrs = [];
     var theImage, w, h;
     for(var i = 0; i < itemsSize; ++i) {
@@ -54,7 +54,7 @@ var rowGrid = function(container, options) {
       if (!(h = parseInt(theImage.getAttribute('height')))) {
         theImage.setAttribute('height', h = theImage.offsetHeight);
       }
-      
+
       itemAttrs[i] = {
         width: w,
         height: h
@@ -74,7 +74,7 @@ var rowGrid = function(container, options) {
 
       rowWidth += itemAttrs[index].width;
       rowElems.push(items[index]);
-      
+
       // check if it is the last element
       if(index === itemsSize - 1) {
         for(var rowElemIndex = 0; rowElemIndex < rowElems.length; rowElemIndex++) {
@@ -88,7 +88,7 @@ var rowGrid = function(container, options) {
               'margin-right:' + ((rowElemIndex < rowElems.length - 1)?options.minMargin+'px' : 0);
         }
       }
-      
+
       // check whether width of row is too high
       if(rowWidth + options.maxMargin * (rowElems.length - 1) > containerWidth) {
         var diff = rowWidth + options.maxMargin * (rowElems.length - 1) - containerWidth;

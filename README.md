@@ -7,21 +7,21 @@ The grid is similar to grids on Google Image Search, flickr, shutterstock and Go
 
 Features:
 
- * responisve
+ * responsive
  * infinite scrolling
  * support for all modern browsers and IE >= 9
 
 [![Example Grid](http://brunjo.github.io/rowGrid.js/example.png)][2]
 
 Do you like this project? Follow me on Twitter [@3runjo][1].
- 
+
 ## How does it work?
 All items must have the **same height** but the **width can be variable**. RowGrid.js justifies the items in straight rows so that the width of the rows equals the width of the container/parent element.
 At first rowGrid.js adjusts the margin between the items. If this is not enough rowGrid.js scales down the items.
- 
+
 ## Demos & Examples
 Real world example: http://www.pexels.com/
- 
+
 ## Installation
 Just include row-grid.js
 ```HTML
