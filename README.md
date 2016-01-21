@@ -1,9 +1,9 @@
 # rowGrid.js (no jQuery required)
-> This version of rowGrid.js is **not fully documented** yet. Check out the master branch of this repository to see the documented [jQuery version](https://github.com/brunjo/rowGrid.js).
+> This version of rowGrid.js is not fully documented yet. Check out the master branch of this repository to see the documented [jQuery version](https://github.com/brunjo/rowGrid.js).
 
-**rowGrid.js is a small, lightweight (~900 bytes gzipped) JavaScript plugin for placing images (or other items) in  straight rows.**
+**rowGrid.js is a small, lightweight (~1kB gzipped) JavaScript plugin for placing images (or other items) in straight rows.**
 
-The grid is similar to grids on Google Image Search, flickr, shutterstock and Google+ images.
+The grid is similar to grids on Google Image Search, Flickr, Shutterstock and Google+ images.
 
 Features:
 
@@ -20,7 +20,7 @@ All items must have the **same height** but the **width can be variable**. RowGr
 At first rowGrid.js adjusts the margin between the items. If this is not enough rowGrid.js scales down the items.
 
 ## Demos & Examples
-Real world example: http://www.pexels.com/
+Real world example: https://www.pexels.com/
 
 ## Installation
 Just include row-grid.js
@@ -48,7 +48,10 @@ var container = document.getElementsByClassName('container')[0];
 rowGrid(container, {itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item", lastRowClass: 'last-row', resize: true});
 ```
 
-**TODO add documentation**
+### Relayout
+You can relayout the complete grid with `rowGrid(container);`. If you appended items to the grid you can call `rowGrid(container, 'appended');` to arrange just the new items in the grid.
+
+**TODO add more documentation**
 
 
   [1]: https://twitter.com/3runjo "@3runjo"
