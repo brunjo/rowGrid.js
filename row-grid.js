@@ -41,6 +41,7 @@ var rowGrid = function(container, options) {
       rowElems = [],
       items = Array.prototype.slice.call(items || container.querySelectorAll(options.itemSelector)),
       itemsSize = items.length;
+
     // read
     var containerStyle = getComputedStyle(container);
     var containerWidth = Math.floor(container.getBoundingClientRect().width) - parseFloat(containerStyle.getPropertyValue('padding-left')) - parseFloat(containerStyle.getPropertyValue('padding-right'));
@@ -79,6 +80,7 @@ var rowGrid = function(container, options) {
         items[index].className = items[index].className.replace(new RegExp('(^|\\b)' + options.firstItemClass + '|' + options.lastRowClass + '(\\b|$)', 'gi'), ' ');
       }
 
+      // add element to row
       rowWidth += itemAttrs[index].width;
       rowElems.push(items[index]);
 
@@ -100,6 +102,7 @@ var rowGrid = function(container, options) {
       if (rowWidth + options.maxMargin * (rowElems.length - 1) > containerWidth) {
         var diff = rowWidth + options.maxMargin * (rowElems.length - 1) - containerWidth;
         var nrOfElems = rowElems.length;
+
         // change margin
         var maxSave = (options.maxMargin - options.minMargin) * (nrOfElems - 1);
         if (maxSave < diff) {
@@ -109,13 +112,17 @@ var rowGrid = function(container, options) {
           var rowMargin = options.maxMargin - diff / (nrOfElems - 1);
           diff = 0;
         }
+
         var rowElem,
+          newHeight = null,
           widthDiff = 0;
         for (var rowElemIndex = 0; rowElemIndex < rowElems.length; rowElemIndex++) {
           rowElem = rowElems[rowElemIndex];
+
           var rowElemWidth = itemAttrs[index + parseInt(rowElemIndex) - rowElems.length + 1].width;
           var newWidth = rowElemWidth - (rowElemWidth / rowWidth) * diff;
-          var newHeight = Math.round(itemAttrs[index + parseInt(rowElemIndex) - rowElems.length + 1].height * (newWidth / rowElemWidth));
+          newHeight = newHeight || Math.round(itemAttrs[index + parseInt(rowElemIndex) - rowElems.length + 1].height * (newWidth / rowElemWidth));
+
           if (widthDiff + 1 - newWidth % 1 >= 0.5) {
             widthDiff -= newWidth % 1;
             newWidth = Math.floor(newWidth);
