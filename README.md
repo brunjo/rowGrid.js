@@ -27,6 +27,11 @@ Just include row-grid.js
 ```HTML
 <script src="path/to/row-grid.min.js"></script>
 ```
+
+You can install it also with Bower or npm:
+* Install with [Bower](http://bower.io): `bower install rowGrid`.
+* Install with [npm](https://www.npmjs.com): `npm install rowgrid`.
+
 ## Usage
 It is important that you either **declare the width and height as attributes** on the img tag or that you wait until the images are loaded before you start rowGrid.js.
 

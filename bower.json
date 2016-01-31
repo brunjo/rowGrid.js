@@ -1,11 +1,16 @@
 {
-  "name": "rowGrid.js",
+  "name": "rowGrid",
   "description": "A small, lightweight JavaScript plugin for placing items in straight rows",
-  "version": "2.0.1",
+  "version": "1.0.6",
   "license": "MIT",
   "authors": [
     { "name": "Bruno Joseph", "email": "bruno.joseph95@gmail.com"," homepage": "http://brunojoseph.com" }
   ],
+  "homepage": "https://github.com/brunjo/rowGrid.js/tree/vanilla-js",
   "main": "row-grid.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brunjo/rowGrid.js.git#vanilla-js"
+  },
   "ignore": []
 }
