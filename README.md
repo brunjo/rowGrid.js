@@ -30,6 +30,11 @@ RowGrid.js requires jQuery 1.7 or above.
 <script src="path/to/jquery.min.js"></script>
 <script src="path/to/jquery.row-grid.min.js"></script>
 ```
+
+You can install it also with Bower or npm:
+* Install with [Bower](http://bower.io): `bower install rowGrid.js`.
+* Install with [npm](https://www.npmjs.com): `npm install rowgrid.js`.
+
 ## Usage
 It is important that you either **declare the width and height as attributes** on the img tag or that you wait until the images are loaded before you start rowGrid.js.
 
