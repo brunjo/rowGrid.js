@@ -1,7 +1,7 @@
 (function($){
   $.fn.rowGrid = function( options ) {
     return this.each(function() {
-      $this = $(this);
+      var $this = $(this);
       if(options === 'appended') {
         options = $this.data('grid-options');
         var $lastRow = $this.children('.' + options.lastRowClass);
