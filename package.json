@@ -1,6 +1,6 @@
 {
   "name": "rowgrid.js",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A small, lightweight JavaScript plugin for placing items in straight rows",
   "main": "jquery.row-grid.js",
   "directories": {
