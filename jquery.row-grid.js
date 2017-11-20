@@ -35,6 +35,7 @@
         rowElems = [],
         items = jQuery.makeArray(items || container.querySelectorAll(options.itemSelector)),
         itemsSize = items.length;
+        
     // read
 
     var containerBoundingRect = container.getBoundingClientRect();
@@ -49,6 +50,7 @@
         --itemsSize;
         continue;
       }
+      
       // get width and height via attribute or js value
       if (!(w = parseInt(theImage.getAttribute('width')))) {
         theImage.setAttribute('width', w = theImage.offsetWidth);
@@ -72,7 +74,7 @@
         items[index].classList.remove(options.lastRowClass);
       } else {
         // IE <10
-        items[index].className = items[index].className.replace(new RegExp('(^|\\b)' + options.firstItemClass + '|' + options.lastRowClass + '(\\b|$)', 'gi'), ' ');
+        items[index].className = items[index].className.replace(new RegExp('(^|\\b)' + options.firstItemClass + '|' + options.lastItemClass + '|' + options.lastRowClass + '(\\b|$)', 'gi'), ' ');
       }
 
       rowWidth += itemAttrs[index].width;
