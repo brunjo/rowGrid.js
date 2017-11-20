@@ -26,7 +26,8 @@
     maxMargin: null,
     resize: true,
     lastRowClass: 'last-row',
-    firstItemClass: null
+    firstItemClass: null,
+    lastItemClass: null
   };
 
   function layout(container, options, items) {
@@ -67,6 +68,7 @@
     for(var index = 0; index < itemsSize; ++index) {
       if (items[index].classList) {
         items[index].classList.remove(options.firstItemClass);
+        items[index].classList.remove(options.lastItemClass);
         items[index].classList.remove(options.lastRowClass);
       } else {
         // IE <10
@@ -123,6 +125,9 @@
               'margin-right: ' + ((rowElemIndex < rowElems.length - 1)?rowMargin : 0) + 'px';
           if(rowElemIndex === 0) {
             rowElem.className += ' ' + options.firstItemClass;
+          }
+          if(rowElemIndex == rowElems.length-1) {
+            rowElem.className += ' ' + options.lastItemClass;
           }
         }
         rowElems = [],

@@ -7,7 +7,7 @@
     body {
       overflow-y: scroll;
     }
-  
+
     /* clearfix because of floats */
     .container:before,
     .container:after {
@@ -39,7 +39,7 @@
   <script>
     $(document).ready(function(){
       /* Start rowGrid.js */
-      $(".container").rowGrid({itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item"});
+      $(".container").rowGrid({itemSelector: ".item", minMargin: 10, maxMargin: 25, firstItemClass: "first-item", lastItemClass: "last-item"});
     });
   </script>
 </head>
