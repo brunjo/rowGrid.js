@@ -42,7 +42,12 @@
     var containerWidth = Math.floor(containerBoundingRect.right - containerBoundingRect.left)-parseFloat($(container).css('padding-left'))-parseFloat($(container).css('padding-right'));
     var itemAttrs = [];
     var theImage, w, h;
+    var imageOffsetWidth = theImage.offsetWidth;
+    var imageOffsetHeight = theImage.offsetHeight;
+      
     for(var i = 0; i < itemsSize; ++i) {
+      // we need a visible image element
+      if (!theImage || imageOffsetHeight <= 0 || imageOffsetWidth <= 0) {
       theImage = items[i].getElementsByTagName('img')[0];
       if (!theImage) {
         items.splice(i, 1);
@@ -53,10 +58,10 @@
       
       // get width and height via attribute or js value
       if (!(w = parseInt(theImage.getAttribute('width')))) {
-        theImage.setAttribute('width', w = theImage.offsetWidth);
+        theImage.setAttribute('width', w = imageOffsetWidth);
       }
       if (!(h = parseInt(theImage.getAttribute('height')))) {
-        theImage.setAttribute('height', h = theImage.offsetHeight);
+        theImage.setAttribute('height', h = imageOffsetHeight);
       }
 
       itemAttrs[i] = {
