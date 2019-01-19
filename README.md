@@ -31,7 +31,9 @@ RowGrid.js requires jQuery 1.7 or above.
 <script src="path/to/jquery.row-grid.min.js"></script>
 ```
 
-You can install it also with Bower or npm:
+Alternativlly, if you don't want to host rowGrid.js yourself, you can use cdnjs: https://cdnjs.com/libraries/rowgrid.js
+
+You can also install it with Bower or npm:
 * Install with [Bower](http://bower.io): `bower install rowGrid.js`.
 * Install with [npm](https://www.npmjs.com): `npm install rowgrid.js`.
 
