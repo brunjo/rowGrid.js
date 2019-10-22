@@ -24,5 +24,8 @@
   "homepage": "https://github.com/brunjo/rowGrid.js",
   "dependencies" : {
     "jquery": ">=1.7.0"
+  },
+  "scripts":{
+    "compress" : "uglifyjs jquery.row-grid.js -o jquery.row-grid.min.js"
   }
 }
